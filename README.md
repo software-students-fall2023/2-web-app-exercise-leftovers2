@@ -4,7 +4,7 @@ A little exercise to build a web application following an agile development proc
 
 ## Product vision statement
 
-See instructions. Delete this line and place the Product Vision Statement here.
+Our app is an online address book where the user can store imformation on their contact's addresses and make notes specific to each contact.
 
 ## User stories
 
