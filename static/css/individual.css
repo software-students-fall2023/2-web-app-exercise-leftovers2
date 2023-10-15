@@ -4,20 +4,20 @@
     /* overflow: hidden; */
 }
 
-header{
+.nav{
     display: flex;
     justify-content: space-evenly;
     padding: 40px 0px;
     width: initial;
     height: 100%;
 }
-h1{
+.iv_h1{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-p{
+.iv_p{
   margin-bottom: 10px;
 }
 
