@@ -3,18 +3,18 @@ from flask import Flask, render_template, request, redirect, url_for, make_respo
 import pymongo
 from bson.objectid import ObjectId
 from pymongo import MongoClient
-
+import os
 from db import db
 
-contactList = db['contactData']
+contactList = db[os.getenv('MONGODB_COLLECTION')]
 
 app = Flask(__name__)
 
 ## Main Page with a list of all contacts
 @app.route('/')
 def home():
-    return render_template('/index.html', flask_test='This test is a success!')
-    # return redirect(url_for('list_view'))
+    # return render_template('/index.html', flask_test='This test is a success!')
+    return redirect(url_for('list_view'))
 
 @app.route('/list_view', methods=['GET'])
 def list_view():
@@ -24,6 +24,7 @@ def list_view():
 
 @app.route('/get_individual', methods=['POST'])
 def get_individual():
+    # return redirect(url_for('individual_view'))
     id = request.form.get('_id')
     contact = contactList.find_one({'_id':id})
     if contact:
@@ -36,7 +37,6 @@ def individual_view():
     # contact = session['current_contact']
     contact = None
     return render_template('individual_view.html', contact=contact)
-
 ## Add Contact View
 @app.route('/add_view', methods=['GET'])
 def add_view():

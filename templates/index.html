@@ -9,6 +9,19 @@
     />
   </head>
   <body>
-    <li>{{flask_test}}</li>
+    <header class="headerContainer">
+      <div class="back_btn"><button>Back</button></div>
+      <div class="iv_h1"><h1>Page Title</h1></div>
+    </header>
+
+    <main>{% block container %} {% endblock %}</main>
+
+    <footer>
+      <div class="footerContainer">
+        <div><button>Home</button></div>
+        <div><button>Add</button></div>
+        <div><button>Delete</button></div>
+      </div>
+    </footer>
   </body>
 </html>
