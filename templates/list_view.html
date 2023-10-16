@@ -2,4 +2,10 @@
 <h2>Contacts</h2>
 <p>&lt; Show the list of all the contacts &gt;</p>
 
+<ul>
+  {% for contact in contacts %}
+  <li>{{contact.name}}</li>
+  {% endfor %}
+</ul>
+
 {% endblock %}

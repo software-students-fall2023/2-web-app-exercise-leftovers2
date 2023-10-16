@@ -3,23 +3,23 @@ from flask import Flask, render_template, request, redirect, url_for, make_respo
 import pymongo
 from bson.objectid import ObjectId
 from pymongo import MongoClient
-
+import os
 from db import db
 
-contactList = db['contactData']
+contactList = db[os.getenv('MONGODB_COLLECTION')]
 
 app = Flask(__name__)
 
 ## Main Page with a list of all contacts
 @app.route('/')
 def home():
-    return render_template('/index.html', flask_test='This test is a success!')
-    # return redirect(url_for('list_view'))
+    # return render_template('/index.html', flask_test='This test is a success!')
+    return redirect(url_for('list_view'))
 
 @app.route('/list_view', methods=['GET'])
 def list_view():
-    listing = contactList.find({})
-    session['listing'] = listing;
+    listing = list(contactList.find({}).sort("name", 1))
+    # session['listing'] = listing;
     return render_template('list_view.html', contacts=listing)
 
 @app.route('/get_individual', methods=['POST'])
