@@ -18,10 +18,9 @@ def home():
 
 @app.route('/list_view', methods=['GET'])
 def list_view():
-    # listing = contactList.find({})
+    listing = contactList.find({})
     # session['listing'] = listing;
-    # return render_template('list_view.html', contacts=listing)
-    return render_template('list_view.html')
+    return render_template('list_view.html', contacts=listing)
 
 @app.route('/get_individual', methods=['POST'])
 def get_individual():
@@ -29,16 +28,15 @@ def get_individual():
     id = request.form.get('_id')
     contact = contactList.find_one({'_id':id})
     if contact:
-        session['current_contact'] = contact
+        # session['current_contact'] = contact
         return redirect(url_for('individual_view', contact=contact))
 
 ## Individual Contact View
 @app.route('/individual_view', methods=['GET'])
 def individual_view():
     # contact = session['current_contact']
-    # return render_template('individual_view.html', contact=contact)
-    return render_template('individual_view.html')
-
+    contact = None
+    return render_template('individual_view.html', contact=contact)
 ## Add Contact View
 @app.route('/add_view', methods=['GET'])
 def add_view():
@@ -58,25 +56,26 @@ def add_contact():
 ## Delete View
 @app.route('/delete_view', methods=['GET'])
 def delete_view():
-    if(session['listing'] == None):
-        listing = contactList.find({})
-        session['listing'] = listing
-    else:
-        listing = session['listing']
+    # if(session['listing'] == None):
+    listing = contactList.find({})
+        # session['listing'] = listing
+    # else:
+        # listing = session['listing']
     return render_template('delete_view.html', contacts=listing)
 
 @app.route('/delete_action', methods=['POST'])
 def delete_action():
     id = request.form.get('_id')
     contact = contactList.find_one({'_id': id})
-    listing = session['listing']
+    # listing = session['listing']
     if contact:
         contactList.delete_one(contact);
         listing = contactList.find({})
-        session['listing'] = listing
+        # session['listing'] = listing
         return render_template('delete_view.html', contacts=listing)
     else:
         error = 'Could not find contact to delete.'
+        listing = contactList.find({})
         return render_template('delete_view.html', contacts=listing, error=error)
 
 if __name__ == "__main__":
