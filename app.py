@@ -18,12 +18,14 @@ def home():
 
 @app.route('/list_view', methods=['GET'])
 def list_view():
-    listing = contactList.find({})
-    session['listing'] = listing;
-    return render_template('list_view.html', contacts=listing)
+    # listing = contactList.find({})
+    # session['listing'] = listing;
+    # return render_template('list_view.html', contacts=listing)
+    return render_template('list_view.html')
 
 @app.route('/get_individual', methods=['POST'])
 def get_individual():
+    # return redirect(url_for('individual_view'))
     id = request.form.get('_id')
     contact = contactList.find_one({'_id':id})
     if contact:
@@ -33,8 +35,9 @@ def get_individual():
 ## Individual Contact View
 @app.route('/individual_view', methods=['GET'])
 def individual_view():
-    contact = session['current_contact']
-    return render_template('individual_view.html', contact=contact)
+    # contact = session['current_contact']
+    # return render_template('individual_view.html', contact=contact)
+    return render_template('individual_view.html')
 
 ## Add Contact View
 @app.route('/add_view', methods=['GET'])
