@@ -6,8 +6,10 @@
 {% block a %}{% endblock %}
 
 <div>
-	{% for contact in contacts %}
-	<div class="contactWidget">{{ contactBase(contact.name, contact.phone) }}</div>
-	{% endfor %}
+  {% for contact in contacts %}
+  <a class="contactWidget" href="{{ url_for('individual_view')}}">
+    <div class="">{{ contactBase(contact.name, contact.phone) }}</div>
+  </a>
+  {% endfor %}
 </div>
 {% endblock %}

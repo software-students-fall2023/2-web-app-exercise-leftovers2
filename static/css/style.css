@@ -201,4 +201,5 @@ textarea {
 .contactWidget {
 	border: 1px solid #ccc;
 	margin: 2%;
+	display: block;
 }
