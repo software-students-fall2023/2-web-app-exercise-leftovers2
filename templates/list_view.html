@@ -1,11 +1,13 @@
-{% extends 'index.html' %} {% block container %}
-<h2>Contacts</h2>
+{% macro contactBase(name, phone) -%}
+<p>Name: {{name}}</p>
+<p>Phone: {{phone}}</p>
+{% endmacro %} {% extends 'index.html' %} {% block container %}
 <p>&lt; Show the list of all the contacts &gt;</p>
+{% block a %}{% endblock %}
 
-<ul>
-  {% for contact in contacts %}
-  <li>{{contact.name}}</li>
-  {% endfor %}
-</ul>
-
+<div>
+	{% for contact in contacts %}
+	<div class="contactWidget">{{ contactBase(contact.name, contact.phone) }}</div>
+	{% endfor %}
+</div>
 {% endblock %}
