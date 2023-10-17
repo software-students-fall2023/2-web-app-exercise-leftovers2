@@ -1,5 +1,20 @@
-{% block container %}
-<h2>Add Contact</h2>
-<p>&lt; Form for submission &gt;</p>
-
+{% extends 'index.html' %} {% block container %}
+<form method="POST" action="{{ url_for('add_contact') }}">
+<p>Name:</p>
+    <input type="text" id="fname" name="fname" value="" placeholder="Name" />
+</br>
+<p>Phone:</p>
+<input type="text" id="fphone" name="fphone" value="" placeholder="000-000-0000" />
+</br>
+<p>Email:</p>
+<input type="text" id="femail" name="femail" value="" placeholder="abcde@email.com" />
+</br>
+<p>Address:</p>
+<input type="text" id="faddress" name="faddress" value="" placeholder="Address" />
+</br>
+<p>Notes:</p>
+<textarea id="fnotes" name="fnotes" placeholder="Notes"></textarea>
+<br />
+  <input type="submit" value="Save" />
+</form>
 {% endblock %}

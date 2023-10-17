@@ -1,27 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Contact Book</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/style.css') }}"
-    />
-  </head>
-  <body>
-    <header class="headerContainer">
-      <div class="back_btn"><button>Back</button></div>
-      <div class="iv_h1"><h1>Page Title</h1></div>
-    </header>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Contact Book</title>
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='css/style.css') }}" />
+	</head>
+	<body>
+		<header class="headerContainer">
+			{% if title != 'All Contacts' %}
+			<div class="back_btn">
+				<button onclick="goBack()">Back</button>
+				<script>
+					function goBack() {
+						window.history.back();
+					}
+				</script>
+			</div>
+			{% endif %} {% if title%}
+			<div class="iv_h1"><h1>{{title}}</h1></div>
+			{% endif %}
+		</header>
 
-    <main>{% block container %} {% endblock %}</main>
+		<main>{% block container %} {% endblock %}</main>
 
-    <footer>
-      <div class="footerContainer">
-        <div><button>Home</button></div>
-        <div><button>Add</button></div>
-        <div><button>Delete</button></div>
-      </div>
-    </footer>
-  </body>
+		<footer>
+			<div class="footerContainer">
+				<div>
+					<a href="{{ url_for('list_view')}}"> Home </a>
+				</div>
+				<div>
+					<a href="{{ url_for('add_view')}}"> Add </a>
+				</div>
+				<div>
+					<a href="{{ url_for('delete_view')}}"> Delete </a>
+				</div>
+				<div>
+					<a href="{{ url_for('search_view')}}"> Search </a>
+				</div>
+			</div>
+		</footer>
+	</body>
 </html>
