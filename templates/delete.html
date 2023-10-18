@@ -1,10 +1,20 @@
 {% macro contactBase(name, phone, id) -%}
-<form method="POST" action="{{ url_for('delete_action') }}">
-	<button class="button-38 list" type="submit">
+<form
+	method="POST"
+	action="{{ url_for('delete_action') }}">
+	<div class="button-38 list">
 		<p class="content name">Name: {{name}}</p>
 		<p class="content phone">Phone: {{phone}}</p>
-		<input type="hidden" id="_id" name="_id" value="{{id}}"/>
-	</button>
+		<input
+			type="hidden"
+			id="_id"
+			name="_id"
+			value="{{id}}" />
+		<input
+			type="submit"
+			name="delete"
+			value="DELETE" />
+	</div>
 </form>
 {% endmacro %} {% extends 'index.html' %} {% block container %}
 <p>&lt; Delete Contacts &gt;</p>

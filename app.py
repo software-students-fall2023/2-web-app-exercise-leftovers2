@@ -75,7 +75,7 @@ def delete_view():
 @app.route('/delete_action', methods=['POST'])
 def delete_action():
     id = request.form.get('_id')
-    contact = contactList.find_one({'_id': id})
+    contact = contactList.find_one({'_id':ObjectId(id)})
     # listing = session['listing']
     if contact:
         contactList.delete_one(contact)
@@ -84,7 +84,8 @@ def delete_action():
         return render_template('delete.html', title = "Delete Contacts", contacts=listing)
     else:
         error = 'Could not find contact to delete.'
-        render_template('search.html', title="Search Contacts")
+        print(error)
+        # render_template('search.html', title="Search Contacts")
         listing = contactList.find({})
         return render_template('delete.html', title = "Delete Contacts", contacts=listing, error=error)
 
