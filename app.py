@@ -26,7 +26,7 @@ def home():
 
 @app.route('/list_view', methods=['GET'])
 def list_view():
-    listing = contactList.find({})
+    listing = contactList.find({}).sort('name', 1)
     # session['listing'] = listing;
     return render_template('list_view.html', title = "All Contacts", contacts=listing)
 
@@ -66,7 +66,7 @@ def add_contact():
 @app.route('/delete_view', methods=['GET'])
 def delete_view():
     # if(session['listing'] == None):
-    listing = contactList.find({})
+    listing = contactList.find({}).sort('name', 1)
         # session['listing'] = listing
     # else:
         # listing = session['listing']
