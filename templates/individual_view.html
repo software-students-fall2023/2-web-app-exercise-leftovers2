@@ -4,35 +4,27 @@
 <link rel="stylesheet" href="./edit.html" />Edit
 
 <div class="info">
-  <div class="content name">Johnny Appleseed</div>
+  <div class="content name">{{contact.name}}</div>
 
   <div class="content phone">
     <div>phone:</div>
-    <div>000-000-0000</div>
+    <div  pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">{{contact.phone}}</div>
   </div>
 
   <div class="content email">
     <div>email:</div>
-    <div class="data">example@email.com</div>
+    <div class="data">{{contact.email}}</div>
   </div>
 
   <div class="content address">
     <p class="iv_p">
-      70 Washington Sq <br />
-      New York NY 100012<br />United States
-    </p>
-    <p class="iv_p"></p>
-    <p class="iv_p">
-      70 Washington Sq <br />
-      New York NY 100012<br />United States
+      {{contact.address}}
     </p>
   </div>
   <div class="content notes">
     NOTES GO HERE
     <p class="iv_p">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quam
-      laboriosam a ea exercitationem, non aut iste culpa, assumenda beatae rem
-      dolores facilis fugit labore eaque optio adipisci earum magnam.
+      {{contact.notes}}
     </p>
   </div>
 </div>

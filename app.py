@@ -5,10 +5,18 @@ from bson.objectid import ObjectId
 from pymongo import MongoClient
 import os
 from db import db
+from bson import json_util
+import json
+
+def parse_json(data):
+    return json.loads(json_util.dumps(data))
+
 
 contactList = db[os.getenv('MONGODB_COLLECTION')]
 
 app = Flask(__name__)
+
+app.secret_key = 'very_secret_key_of_great_secrecy'
 
 ## Main Page with a list of all contacts
 @app.route('/')
@@ -24,18 +32,16 @@ def list_view():
 
 @app.route('/get_individual', methods=['POST'])
 def get_individual():
-    # return redirect(url_for('individual_view'))
     id = request.form.get('_id')
-    contact = contactList.find_one({'_id':id})
+    contact = contactList.find_one({'_id':ObjectId(id)})
     if contact:
-        # session['current_contact'] = contact
+        session['current_contact'] = parse_json(contact)
         return redirect(url_for('individual_view', title = "Contact", contact=contact))
 
 ## Individual Contact View
 @app.route('/individual_view', methods=['GET'])
 def individual_view():
-    # contact = session['current_contact']
-    contact = None
+    contact = session['current_contact']
     return render_template('individual_view.html', title = "Contact", contact=contact)
 
 ## Add Contact View
