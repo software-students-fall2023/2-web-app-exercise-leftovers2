@@ -1,13 +1,18 @@
-{% macro contactBase(name, phone) -%}
-<p>Name: {{name}}</p>
-<p>Phone: {{phone}}</p>
+{% macro contactBase(name, phone, id) -%}
+<form method="POST" action="{{ url_for('get_individual') }}">
+	<button class="button-38 list" type="submit">
+		<p class="content name">Name: {{name}}</p>
+		<p class="content phone">Phone: {{phone}}</p>
+		<input type="hidden" id="_id" name="_id" value="{{id}}"/>
+	</button>
+</form>
 {% endmacro %} {% extends 'index.html' %} {% block container %}
 <p>&lt; Show the list of all the contacts &gt;</p>
 {% block a %}{% endblock %}
 
 <div>
 	{% for contact in contacts %}
-	<div class="contactWidget">{{ contactBase(contact.name, contact.phone) }}</div>
+	<div class="contactWidget">{{ contactBase(contact.name, contact.phone, contact._id) }}</div>
 	{% endfor %}
 </div>
 {% endblock %}
