@@ -26,7 +26,7 @@ def list_view():
 def get_individual():
     # return redirect(url_for('individual_view'))
     id = request.form.get('_id')
-    contact = contactList.find_one({'_id':id})
+    contact = contactList.find_one({'_id':ObjectId(id)})
     if contact:
         # session['current_contact'] = contact
         return redirect(url_for('individual_view', title = "Contact", contact=contact))
