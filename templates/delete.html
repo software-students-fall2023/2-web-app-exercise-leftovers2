@@ -1,5 +1,28 @@
-{% extends 'index.html' %} {% block container %}
-<h2>Delete Contacts</h2>
-<p>&lt; Show list of all contacts with delete button next to them &gt;</p>
+{% macro contactBase(name, phone, id) -%}
+<form
+	method="POST"
+	action="{{ url_for('delete_action') }}">
+	<div class="button-38 list">
+		<p class="content name">Name: {{name}}</p>
+		<p class="content phone">Phone: {{phone}}</p>
+		<input
+			type="hidden"
+			id="_id"
+			name="_id"
+			value="{{id}}" />
+		<input
+			type="submit"
+			name="delete"
+			value="DELETE" />
+	</div>
+</form>
+{% endmacro %} {% extends 'index.html' %} {% block container %}
+<p>&lt; Delete Contacts &gt;</p>
+{% block a %}{% endblock %}
 
+<div>
+	{% for contact in contacts %}
+	<div class="contactWidget">{{ contactBase(contact.name, contact.phone, contact._id) }}</div>
+	{% endfor %}
+</div>
 {% endblock %}
