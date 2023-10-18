@@ -84,6 +84,7 @@ def delete_action():
         return render_template('delete.html', title = "Delete Contacts", contacts=listing)
     else:
         error = 'Could not find contact to delete.'
+        render_template('search.html', title="Search Contacts")
         listing = contactList.find({})
         return render_template('delete.html', title = "Delete Contacts", contacts=listing, error=error)
 
