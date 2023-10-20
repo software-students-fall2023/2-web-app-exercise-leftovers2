@@ -1,14 +1,15 @@
 {% extends 'index.html' %} {% block container %}
 <!-- =====================BODY (NAME, PHONE, ...)===================== -->
-<button id="edit" class="button-38" role="button"></button>
-<link rel="stylesheet" href="./edit.html" />Edit
+<button id="edit" class="button-38" role="button">
+  <a href="{{url_for('edit_view')}}">Edit</a>
+</button>
 
 <div class="info">
   <div class="content name">{{contact.name}}</div>
 
   <div class="content phone">
     <div>phone:</div>
-    <div  pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">{{contact.phone}}</div>
+    <div pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">{{contact.phone}}</div>
   </div>
 
   <div class="content email">
@@ -17,15 +18,12 @@
   </div>
 
   <div class="content address">
-    <p class="iv_p">
-      {{contact.address}}
-    </p>
+    <div>address:</div>
+    <p class="iv_p">{{contact.address}}</p>
   </div>
   <div class="content notes">
     NOTES GO HERE
-    <p class="iv_p">
-      {{contact.notes}}
-    </p>
+    <p class="iv_p">{{contact.notes}}</p>
   </div>
 </div>
 {% endblock %}
