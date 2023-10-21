@@ -1,5 +1,62 @@
 {% extends 'index.html' %} {% block container %}
-<h2>Edit Contact</h2>
-<p>&lt; Show a contact with all it's fields editable &gt;</p>
+<!-- =====================BODY (NAME, PHONE, ...)===================== -->
+
+<div class="info">
+  <form method="POST" action="{{url_for('get_edits')}}">
+    <div class="content name">
+      <!-- {% macro contactBase(id) -%} -->
+
+      <!-- <input type="hidden" id="_id" name="_id" value="{{id}}" /> -->
+      <input type="text" name="newName" value="{{contact.name}}" />
+
+      <!-- {% endmacro %} {{ contactBase(contact._id['$oid']) }} -->
+    </div>
+
+    <div class="content phone">
+      <div>phone:</div>
+      <!-- <div pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">{{contact.phone}}</div> -->
+
+      <!-- {% macro contactBase(id) -%} -->
+
+      <!-- <input type="hidden" id="_id" name="_id" value="{{id}}" /> -->
+      <input type="text" name="newPhone" value="{{contact.phone}}" />
+
+      <!-- {% endmacro %} {{ contactBase(contact._id['$oid']) }} -->
+    </div>
+
+    <div class="content email">
+      <div>email:</div>
+      <!-- {% macro contactBase(id) -%} -->
+
+      <!-- <input type="hidden" id="_id" name="_id" value="{{id}}" /> -->
+      <input type="text" name="newEmail" value="{{contact.email}}" />
+
+      <!-- {% endmacro %} {{ contactBase(contact._id['$oid']) }} -->
+    </div>
+
+    <div class="content address">
+      <div>address:</div>
+      <!-- {% macro contactBase(id) -%} -->
+
+      <!-- <input type="hidden" id="_id" name="_id" value="{{id}}" /> -->
+      <input type="text" name="newAddress" value="{{contact.address}}" />
+
+      <!-- {% endmacro %} {{ contactBase(contact._id['$oid']) }} -->
+    </div>
+    <div class="content notes">
+      <div>notes:</div>
+      <!-- {% macro contactBase(id) -%} -->
+
+      <!-- <input type="hidden" id="_id" name="_id" value="{{id}}" /> -->
+      <input type="text" name="newNotes" value="{{contact.notes}}" />
+
+      <!-- {% endmacro %} {{ contactBase(contact._id['$oid']) }} -->
+    </div>
+    {% macro contactBase(id) -%}
+    <input type="hidden" name="_id" value="{{id}}" />
+    <input type="submit" id="_id" name="_id" value="done" />
+    {% endmacro %} {{ contactBase(contact._id['$oid']) }}
+  </form>
+</div>
 
 {% endblock %}
