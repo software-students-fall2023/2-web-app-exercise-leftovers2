@@ -1,20 +1,34 @@
 {% extends 'index.html' %} {% block container %}
+<div class="contact_form">
 <form method="POST" action="{{ url_for('add_contact') }}">
+  <div class="form-row">
 <p>Name:</p>
-    <input type="text" id="fname" name="fname" value="" placeholder="Name" />
+    <input type="text" id="fname" name="fname" value="" placeholder="First Last" />
 </br>
+</div>
+<div class="form-row">
 <p>Phone:</p>
 <input type="text" id="fphone" name="fphone" value="" placeholder="000-000-0000" />
 </br>
+</div>
+<div class="form-row">
 <p>Email:</p>
-<input type="text" id="femail" name="femail" value="" placeholder="abcde@email.com" />
+<input type="text" id="femail" name="femail" value="" placeholder="xxxxxx@email.com" />
 </br>
+</div>
+<div class="form-row">
 <p>Address:</p>
 <input type="text" id="faddress" name="faddress" value="" placeholder="Address" />
 </br>
+</div>
+<div class="form-row">
 <p>Notes:</p>
 <textarea id="fnotes" name="fnotes" placeholder="Notes"></textarea>
 <br />
-  <input type="submit" value="Save" />
+</div>
+<div class="form-btn">
+  <input type="submit" value="SAVE" />
+</div>
 </form>
+</div>
 {% endblock %}

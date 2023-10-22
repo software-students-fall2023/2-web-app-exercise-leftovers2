@@ -1,29 +1,35 @@
 {% extends 'index.html' %} {% block container %}
-<!-- =====================BODY (NAME, PHONE, ...)===================== -->
-<button id="edit" class="button-38" role="button">
-  <a href="{{url_for('edit_view')}}">Edit</a>
-</button>
-
 <div class="info">
-  <div class="content name">{{contact.name}}</div>
+	<div class="content">
+		<button
+			id="edit"
+			class="button-edit"
+			role="button">
+			<a href="{{url_for('edit_view')}}">EDIT</a>
+		</button>
 
-  <div class="content phone">
-    <div>phone:</div>
-    <div pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">{{contact.phone}}</div>
-  </div>
+		<p class="name">{{contact.name}}</p>
+	</div>
+	<div class="contact">
+		<div class="content">
+			<p class="title">Phone:</p>
+			<div class="data">{{contact.phone}}</div>
+		</div>
 
-  <div class="content email">
-    <div>email:</div>
-    <div class="data">{{contact.email}}</div>
-  </div>
+		<div class="content">
+			<p class="title">Email:</p>
+			<div class="data">{{contact.email}}</div>
+		</div>
 
-  <div class="content address">
-    <div>address:</div>
-    <p class="iv_p">{{contact.address}}</p>
-  </div>
-  <div class="content notes">
-    NOTES GO HERE
-    <p class="iv_p">{{contact.notes}}</p>
-  </div>
+		<div class="content">
+			<p class="title">Address:</p>
+			<div class="data">{{contact.address}}</div>
+		</div>
+
+		<div class="content">
+			<p class="title">Notes:</p>
+			<div class="notes">{{contact.notes}}</div>
+		</div>
+	</div>
 </div>
 {% endblock %}

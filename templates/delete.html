@@ -2,23 +2,26 @@
 <form
 	method="POST"
 	action="{{ url_for('delete_action') }}">
-	<div class="button-38 list">
-		<p class="content name">Name: {{name}}</p>
-		<p class="content phone">Phone: {{phone}}</p>
-		<input
-			type="hidden"
-			id="_id"
-			name="_id"
-			value="{{id}}" />
-		<input
-			type="submit"
-			name="delete"
-			value="DELETE" />
-	</div>
+	<button class="button-38 list">
+		<div class="contact-base">
+			<div class="contact-text">
+				<p class="content name">{{name}}</p>
+				<p class="content phone">Phone: {{phone}}</p>
+			</div>
+			<div class="delete-svg">
+				<img
+					src="{{ url_for('static', filename='images/trashcan.svg') }}"
+					class="trashcan-svg" />
+			</div>
+		</div>
+	</button>
+	<input
+		type="hidden"
+		id="_id"
+		name="_id"
+		value="{{id}}" />
 </form>
-{% endmacro %} {% extends 'index.html' %} {% block container %}
-<p>&lt; Delete Contacts &gt;</p>
-{% block a %}{% endblock %}
+{% endmacro %} {% extends 'index.html' %} {% block container %} {% block a %}{% endblock %}
 
 <div>
 	{% for contact in contacts %}
