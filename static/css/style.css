@@ -1,9 +1,9 @@
 :root {
-	--color1: #eae7dc;
+	--color1: #fce9d2;
 	--color2: #d8c3a5;
-	--color3: #8e8d8a;
-	--color4: #e98074;
-	--color5: #e85a4f;
+	--color3: #101010;
+	--color4: #55ad86;
+	--color5: #1f7850;
 
 	--font1: "Inter var";
 	--font2: "Helvetica Neue";
@@ -38,7 +38,7 @@ footer {
 }
 
 .footerButton {
-	background-color: var(--color4);
+	background-color: var(--color5);
 	padding-left: 1%;
 	padding-right: 1%;
 	font-family: var(--font3);
@@ -287,7 +287,7 @@ hr {
 }
 
 .content {
-	color: var(--color5);
+	color: var(--color3);
 
 	height: fit-content;
 	border-radius: 10px;
