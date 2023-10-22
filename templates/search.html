@@ -1,15 +1,24 @@
 {% extends 'index.html' %} {% block container %}
-<h2>Search</h2>
-<p>&lt; A search bar and "GO" button &gt;</p>
-
-<form
-	method="GET"
-	action="{{ url_for('search_action') }}">
-	<input
-		type="text"
-		placeholder="Search.."
-		name="search" />
-	<button type="submit"><i class="fa fa-search"></i></button>
-</form>
+<div class="contact_form">
+	<form
+		method="POST"
+		action="{{ url_for('search_action') }}">
+		<div class="form-search">
+			<div class="form-search-bar">
+				<input
+					type="text"
+					id="fsearch"
+					name="fsearch"
+					value=""
+					placeholder="Search..." />
+			</div>
+			<div class="form-btn">
+				<input
+					type="submit"
+					value="GO" />
+			</div>
+		</div>
+	</form>
+</div>
 
 {% endblock %}
