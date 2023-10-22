@@ -250,6 +250,15 @@ footer {
 	color: var(--color1);
 }
 
+.form-search {
+	width: auto;
+	display: flex;
+}
+
+.form-search-bar {
+	margin-right: 1em;
+}
+
 .button-38.list:focus-visible {
 	box-shadow: none;
 }
@@ -357,6 +366,19 @@ hr {
 	border: 1px solid transparent;
 	color: var(--color1);
 	font-weight: bold;
+}
+
+.search-query {
+	color: var(--color5);
+	font-weight: bold;
+	padding-left: 1em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	font-size: 1em;
+}
+
+.search-query p {
+	font-size: 2em;
 }
 
 .button-edit:hover {

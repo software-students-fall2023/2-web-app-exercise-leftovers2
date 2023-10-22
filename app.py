@@ -9,6 +9,7 @@ from flask import (
 )
 
 import pymongo
+import re
 from bson.objectid import ObjectId
 from pymongo import MongoClient
 import os
@@ -120,9 +121,7 @@ def add_contact():
         "address": home_address,
         "notes": notes,
     }
-    print(newContact)
     contactList.insert_one(newContact)
-    print('inserted"')
     return redirect(url_for("list_view"))
 
 
@@ -161,6 +160,26 @@ def delete_action():
 @app.route("/search_view", methods=["GET"])
 def search_view():
     return render_template("search.html", title="Search Contacts")
+
+@app.route("/search_action", methods=["POST"])
+def search_action():
+    search_query = request.form.get("fsearch")
+    # listing = contactList.find({ "name": search_query })
+    regx = re.compile(search_query, re.IGNORECASE)
+    # listing = contactList.find(
+    #     { "name": { '$regex': regx}})
+    
+    listing = contactList.find({"$or": [
+        { "name": { '$regex': regx}},
+        { "phone": { '$regex': regx}},
+        { "email": { '$regex': regx}},
+        { "address": { '$regex': regx}},
+        { "notes": { '$regex': regx}},
+    ]})
+    
+    return render_template(
+        "search_results.html", title="Search Results", query=search_query, length=len(list(listing.clone())), contacts=listing
+    )
 
 
 if __name__ == "__main__":
