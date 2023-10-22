@@ -2,4 +2,14 @@
 <h2>Search</h2>
 <p>&lt; A search bar and "GO" button &gt;</p>
 
+<form
+	method="GET"
+	action="{{ url_for('search_action') }}">
+	<input
+		type="text"
+		placeholder="Search.."
+		name="search" />
+	<button type="submit"><i class="fa fa-search"></i></button>
+</form>
+
 {% endblock %}
