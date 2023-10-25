@@ -1,0 +1,49 @@
+{% extends 'index.html' %} {% block container %}
+<!-- =====================BODY (NAME, PHONE, ...)===================== -->
+
+<div class="contact_form">
+	<form
+		method="POST"
+		action="{{url_for('get_edits')}}">
+    <div class="form-row">
+      <p>Name:</p>
+          <input type="text" id="fname" name="newName" value="{{contact.name}}" placeholder="First Last" />
+      </br>
+      </div>
+      <div class="form-row">
+      <p>Phone:</p>
+      <input type="text" id="fphone" name="newPhone" value="{{contact.phone}}" placeholder="000-000-0000" />
+      </br>
+      </div>
+      <div class="form-row">
+      <p>Email:</p>
+      <input type="text" id="femail" name="newEmail" value="{{contact.email}}" placeholder="xxxxxx@email.com" />
+      </br>
+      </div>
+      <div class="form-row">
+      <p>Address:</p>
+      <input type="text" id="faddress" name="newAddress" value="{{contact.address}}" placeholder="Address" />
+      </br>
+      </div>
+      <div class="form-row">
+      <p>Notes:</p>
+      <textarea id="fnotes" name="newNotes" placeholder="">{{contact.notes}}</textarea>
+      <br />
+      </div>
+
+		{% macro contactBase(id) -%}
+		<input
+			type="hidden"
+			name="_id"
+			value="{{id}}" />
+
+    <div class="form-btn">
+      <input type="submit"
+			id="_id"
+			name="_id" value="SAVE EDIT" />
+    </div>
+		{% endmacro %} {{ contactBase(contact._id['$oid']) }}
+	</form>
+</div>
+
+{% endblock %}

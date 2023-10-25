@@ -1,0 +1,35 @@
+{% extends 'index.html' %} {% block container %}
+<div class="info">
+	<div class="content">
+		<button
+			id="edit"
+			class="button-edit"
+			role="button">
+			<a href="{{url_for('edit_view')}}">EDIT</a>
+		</button>
+
+		<p class="name">{{contact.name}}</p>
+	</div>
+	<div class="contact">
+		<div class="content">
+			<p class="title">Phone:</p>
+			<div class="data">{{contact.phone}}</div>
+		</div>
+
+		<div class="content">
+			<p class="title">Email:</p>
+			<div class="data">{{contact.email}}</div>
+		</div>
+
+		<div class="content">
+			<p class="title">Address:</p>
+			<div class="data">{{contact.address}}</div>
+		</div>
+
+		<div class="content">
+			<p class="title">Notes:</p>
+			<div class="notes">{{contact.notes}}</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% macro contactBase(name, phone, id) -%}
+<form
+	method="POST"
+	action="{{ url_for('get_individual') }}">
+	<button
+		class="button-38 list"
+		type="submit">
+		<div class="contact-base">
+			<div class="contact-text">
+				<p class="content name">{{name}}</p>
+				<p class="content phone">Phone: {{phone}}</p>
+			</div>
+			<div class="contact-svg">
+				<img
+					src="{{ url_for('static', filename='images/arrow.svg') }}"
+					class="arrow-svg" />
+			</div>
+		</div>
+		<input
+			type="hidden"
+			id="_id"
+			name="_id"
+			value="{{id}}" />
+	</button>
+</form>
+{% endmacro %} {% extends 'index.html' %} {% block container %} {% block a %}{% endblock %}
+
+<div>
+	{% for contact in contacts %}
+	<div class="contactWidget">{{ contactBase(contact.name, contact.phone, contact._id) }}</div>
+	{% endfor %}
+</div>
+{% endblock %}
